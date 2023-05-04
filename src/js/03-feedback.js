@@ -9,20 +9,21 @@ const LOCALSTORAGE_KEY = "feedback-form-state"
 
 populateInput()
 function onFormInputValue(evt) {
-    const email = evt.currentTarget.elements.email.value;
-    const message = evt.currentTarget.elements.message.value;
+    const email = refs.form.email.value;
+    const message = refs.form.message.value;
     const formValue = {
-    email,
-    message,
-  }
-  console.log(formValue)
+      email,
+      message,
+    }
+  // console.log(formValue)
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formValue));
 }
 
 function onFormSubmit(evt) {
   evt.preventDefault();
+  console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
   localStorage.removeItem(LOCALSTORAGE_KEY);
-  refs.form.reset()
+  refs.form.reset();
 
 }
 
